@@ -5,6 +5,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { StaticImage } from "gatsby-plugin-image"
 import { ContentHalf } from "../../containers/Content"
+import { CustomLink } from "../styled/Buttons"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
@@ -58,7 +59,13 @@ const PortfolioProjects = () => {
             />
           </ContentHalf>
           <ContentHalf paddingLeft="3rem">
-            <h1>Content</h1>
+            <h1>{project.projectTitle}</h1>
+
+            <CustomLink
+              title="Visit Website"
+              href={project.projectWebsite}
+              target="_blank"
+            />
           </ContentHalf>
         </SwiperSlide>
       ))}
