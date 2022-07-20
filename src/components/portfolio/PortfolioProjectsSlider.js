@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { StaticImage } from "gatsby-plugin-image"
 import { ContentHalf } from "../../containers/Content"
 import { CustomLink } from "../styled/Buttons"
+import { Heading, TextContainer } from "../styled/TextContent"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
@@ -24,6 +25,7 @@ const PortfolioProjects = () => {
           projects {
             projectsRepeater {
               projectTitle
+              projectDescription
               projectWebsite
               projectScreenshot {
                 id
@@ -59,8 +61,12 @@ const PortfolioProjects = () => {
             />
           </ContentHalf>
           <ContentHalf paddingLeft="3rem">
-            <h1>{project.projectTitle}</h1>
-
+            <Heading>{project.projectTitle}</Heading>
+            <TextContainer>
+              <div
+                dangerouslySetInnerHTML={{ __html: project.projectDescription }}
+              ></div>
+            </TextContainer>
             <CustomLink
               title="Visit Website"
               href={project.projectWebsite}

@@ -2,14 +2,14 @@ import React, { useState } from "react"
 import axios from "axios"
 import Wrapper from "../containers/Wrapper"
 import Container from "../containers/Container"
-import { FlexContent } from "../containers/Content"
+import { ContentHalf, FlexContent } from "../containers/Content"
 
 import styled from "styled-components"
+import { Heading, TextContainer } from "../components/styled/TextContent"
 
 const FormElement = styled.form`
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
 `
 
 const FormGroup = styled.div`
@@ -44,6 +44,7 @@ const Submit = styled(Input).attrs({
   cursor: pointer;
   background-color: #e85333;
   color: #ffffff;
+  padding: 1rem;
 `
 
 const Textarea = styled.textarea`
@@ -107,52 +108,69 @@ const Contact = () => {
     <Wrapper>
       <Container>
         <FlexContent>
-          <FormElement onSubmit={onSubmitHandler}>
-            <FormGroup>
-              <Label htmlFor="name">Name</Label>
-              <Input
-                id="name"
-                onChange={e => setName(e.target.value)}
-                value={name}
-              />
-            </FormGroup>
-            <FormGroup half inputLeft>
-              <Label htmlFor="email">E-mail</Label>
-              <Input
-                id="email"
-                onChange={e => setEmail(e.target.value)}
-                value={email}
-              />
-            </FormGroup>
-            <FormGroup half inputRight>
-              <Label htmlFor="phone">Phone Number</Label>
-              <Input
-                id="phone"
-                onChange={e => setPhone(e.target.value)}
-                value={phone}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label htmlFor="subject">Subject</Label>
-              <Input
-                id="subject"
-                onChange={e => setSubject(e.target.value)}
-                value={subject}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label htmlFor="message">Message</Label>
-              <Textarea
-                id="message"
-                onChange={e => setMessage(e.target.value)}
-                value={message}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Submit />
-              {response && response}
-            </FormGroup>
-          </FormElement>
+          <ContentHalf paddingRight="5rem">
+            <Heading>Contact me..!</Heading>
+            <TextContainer>
+              <p>
+                I'm baby kinfolk fanny pack subway tile voluptate et. Live-edge
+                cray narwhal, sustainable street art excepteur wayfarers four
+                dollar toast ipsum. Whatever cray synth mollit labore hammock
+                farm-to-table quis kale chips flexitarian. Lyft shaman viral
+                culpa. Waistcoat cupidatat neutra taiyaki. YOLO DIY ad
+                lumbersexual. Enim portland whatever, knausgaard pinterest
+                bicycle rights ennui narwhal heirloom keytar sriracha selfies
+                skateboard kale chips.
+              </p>
+            </TextContainer>
+          </ContentHalf>
+          <ContentHalf>
+            <FormElement onSubmit={onSubmitHandler}>
+              <FormGroup>
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  id="name"
+                  onChange={e => setName(e.target.value)}
+                  value={name}
+                />
+              </FormGroup>
+              <FormGroup half inputLeft>
+                <Label htmlFor="email">E-mail</Label>
+                <Input
+                  id="email"
+                  onChange={e => setEmail(e.target.value)}
+                  value={email}
+                />
+              </FormGroup>
+              <FormGroup half inputRight>
+                <Label htmlFor="phone">Phone Number</Label>
+                <Input
+                  id="phone"
+                  onChange={e => setPhone(e.target.value)}
+                  value={phone}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="subject">Subject</Label>
+                <Input
+                  id="subject"
+                  onChange={e => setSubject(e.target.value)}
+                  value={subject}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="message">Message</Label>
+                <Textarea
+                  id="message"
+                  onChange={e => setMessage(e.target.value)}
+                  value={message}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Submit />
+                {response && response}
+              </FormGroup>
+            </FormElement>
+          </ContentHalf>
         </FlexContent>
       </Container>
     </Wrapper>

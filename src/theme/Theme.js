@@ -21,13 +21,20 @@ const Themes = theme => {
       selectedTheme = {
         background: "#B7661B",
         title: "#23cdb4",
+        heading: "#000000",
+        subheading: "#e3a334",
         text: "#FFFFFF",
+        buttonColor: "#7ed491",
       }
       break
     case "light":
       selectedTheme = {
         background: invertedTheme ? "#000000" : "#FFFFFF",
         title: invertedTheme ? "#FFFFFF" : "#000000",
+        heading: invertedTheme ? "#e85333" : "#000000",
+        subheading: "#e3a334",
+        text: invertedTheme ? "#FFFFFF" : "#000000",
+        buttonColor: "#7ed491",
       }
       break
     default:

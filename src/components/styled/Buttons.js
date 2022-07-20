@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const StyledCustomLink = styled.a`
   font-weight: 900;
-  color: violet;
+  color: ${props => props.theme.buttonColor};
 `
 
 export const CustomLink = ({ title, href, target }) => {
