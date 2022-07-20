@@ -26,9 +26,9 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
-        url:
-          process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+        url: process.env.WPGRAPHQL_URL || `https://backend.biruta.lt/graphql`,
+        useACF: true,
+        acfOptionPageIds: ["Content", "Portfolio", "About"],
       },
     },
 
@@ -54,6 +54,8 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-transition-link`,
+    `gatsby-plugin-styled-components`,
     {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
       resolve: `gatsby-plugin-manifest`,
@@ -67,7 +69,23 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-emoji", // <-- this adds emoji
+            options: {
+              // default emojiConversion --> shortnameToUnicode
+              emojiConversion: "shortnameToUnicode",
+              // when true, matches ASCII characters (in unicodeToImage and shortnameToImage)
+              // e.g. ;) --> 😉
+              ascii: false,
+            },
+          },
+        ],
+      },
+    },
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
 
