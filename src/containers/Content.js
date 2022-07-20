@@ -1,3 +1,4 @@
+import React from "react"
 import styled from "styled-components"
 
 export const Content = styled.main`
@@ -7,8 +8,18 @@ export const FlexContent = styled(Content)`
   display: flex;
   flex-wrap: wrap;
 `
-export const ContentHalf = styled.div`
-  width: 50%;
-  position: relative;
-`
+const StyledContentHalf = styled.div(props => ({
+  paddingLeft: props.paddingLeft,
+  paddingRight: props.paddingRight,
+  width: "50%",
+  position: "relative",
+}))
+
+export const ContentHalf = ({ children, paddingLeft, paddingRight }) => {
+  return (
+    <StyledContentHalf paddingLeft={paddingLeft} paddingRight={paddingRight}>
+      {children}
+    </StyledContentHalf>
+  )
+}
 export default Content

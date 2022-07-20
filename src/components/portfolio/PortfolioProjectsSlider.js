@@ -57,7 +57,7 @@ const PortfolioProjects = () => {
               screenshot={project.projectScreenshot.mediaItemUrl}
             />
           </ContentHalf>
-          <ContentHalf>
+          <ContentHalf paddingLeft="3rem">
             <h1>Content</h1>
           </ContentHalf>
         </SwiperSlide>

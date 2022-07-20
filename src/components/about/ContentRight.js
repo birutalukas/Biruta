@@ -4,7 +4,6 @@ import { useStaticQuery } from "gatsby"
 
 import { Heading, SubHeading, TextContainer } from "../styled/TextContent"
 import ScrollableContent from "../../containers/ScrollableContent"
-
 const ContentRight = () => {
   const {
     wp: {
