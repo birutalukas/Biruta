@@ -15,17 +15,23 @@ const PhotoWrapper = styled.div`
 
 const Photo = styled.img`
   display: block;
-  margin: 0 auto;
-  position: relative;
-  width: 90%;
+  // margin: 0 auto;
+  // position: relative;
+  // width: 90%;
   z-index: 5;
+
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 90%;
+  transform: translateX(-50%);
 `
 
 const PhotoBackground = styled.img`
   transform: translateX(-50%) rotate(180deg);
   display: block;
   position: absolute;
-  top: 25%;
+  top: 7%;
   left: 50%;
   width: 100%;
   z-index: 1;
@@ -46,7 +52,7 @@ const PhotoBackgrounYellow = styled.img`
   transform: translateX(-50%) rotate(90deg);
   display: block;
   position: absolute;
-  top: 25%;
+  top: 7%;
   left: 50%;
   width: 100%;
   z-index: 1;
@@ -66,12 +72,9 @@ const PhotoBackgrounYellow = styled.img`
 const ContentLeft = () => {
   return (
     <PhotoWrapper>
-      <Photo src={photoSrc} alt="SVG logo image" />
-      <PhotoBackground src={photoBackgroundSrc} alt="SVG logo image" />
-      <PhotoBackgrounYellow
-        src={photoBackgroundYellowSrc}
-        alt="SVG logo image"
-      />
+      <Photo src={photoSrc} alt="Lukas Biruta" />
+      <PhotoBackground src={photoBackgroundSrc} alt="" />
+      <PhotoBackgrounYellow src={photoBackgroundYellowSrc} alt="" />
     </PhotoWrapper>
   )
 }
