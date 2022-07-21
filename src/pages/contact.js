@@ -36,6 +36,7 @@ const Input = styled.input`
   border-radius: 3px;
   width: 100%;
   margin-bottom: 0.5rem;
+  outline-color: #e85333;
 `
 const Submit = styled(Input).attrs({
   type: "submit",
@@ -55,6 +56,7 @@ const Textarea = styled.textarea`
   border-radius: 3px;
   width: 100%;
   margin-bottom: 0.5rem;
+  outline-color: #e85333;
 `
 const Message = styled.label`
   margin-bottom: 0.5rem;

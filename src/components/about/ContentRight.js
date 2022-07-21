@@ -1,4 +1,5 @@
 import React from "react"
+
 import { graphql } from "gatsby"
 import { useStaticQuery } from "gatsby"
 
@@ -22,11 +23,12 @@ const ContentRight = () => {
       }
     }
   `)
-  console.log(about)
+
   return (
     <div>
       <Heading>{about.heading}</Heading>
       <SubHeading>{about.subheading}</SubHeading>
+
       <ScrollableContent>
         <TextContainer>
           <div dangerouslySetInnerHTML={{ __html: about.description }}></div>
