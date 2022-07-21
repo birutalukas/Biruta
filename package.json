@@ -36,6 +36,7 @@
     "gatsby-plugin-react-helmet": "^5.0.0",
     "gatsby-plugin-sharp": "^4.0.0",
     "gatsby-plugin-styled-components": "^5.18.0",
+    "gatsby-plugin-transition-link": "^1.20.5",
     "gatsby-remark-emoji": "0.0.3",
     "gatsby-source-filesystem": "^4.0.0",
     "gatsby-source-wordpress": "^6.0.0",
