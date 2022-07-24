@@ -13,6 +13,7 @@ export const Heading = ({ children }) => {
 const StyledSubHeading = styled.h2`
   color: ${props => props.theme.subheading};
   transition: 2s ease-in;
+  margin-top: 1rem;
 `
 export const SubHeading = ({ children }) => {
   return <StyledSubHeading>{children}</StyledSubHeading>

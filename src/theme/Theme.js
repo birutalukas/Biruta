@@ -15,6 +15,7 @@ const Themes = theme => {
         heading: "#e85333",
         subheading: "#e3a334",
         text: "#7ed491",
+        buttonColor: "#7ed491",
       }
       break
     case "neutral":
@@ -34,6 +35,7 @@ const Themes = theme => {
         heading: invertedTheme ? "#e85333" : "#000000",
         subheading: "#e3a334",
         text: invertedTheme ? "#FFFFFF" : "#000000",
+        subtext: invertedTheme ? "#000000" : "#FEFEFE",
         buttonColor: "#7ed491",
       }
       break
@@ -42,23 +44,11 @@ const Themes = theme => {
   }
 
   return selectedTheme
-  // return {
-  //   neutral: {
-  //     background: "#B7661B",
-  //     title: "#6495ed",
-  //     text: "#FFFFFF",
-  //   },
-  //   light: {
-  //     background: invertedTheme ? "#000000" : "#FFFFFF",
-  //     title: "#000000",
-  //     text: "#000000",
-  //   },
-  // }
 }
 const GlobalStyle = createGlobalStyle`
     * {
       margin: 0;
-      padding: 0
+      padding: 0;
       transition: all 0.5s;
     }
   `

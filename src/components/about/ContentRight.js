@@ -1,10 +1,10 @@
 import React from "react"
 
-import { graphql } from "gatsby"
-import { useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
-import { Heading, SubHeading, TextContainer } from "../styled/TextContent"
-import ScrollableContent from "../../containers/ScrollableContent"
+import { Heading, SubHeading } from "../styled/TextContent"
+import AboutMeTabs from "./AboutMeTabs"
+
 const ContentRight = () => {
   const {
     wp: {
@@ -17,23 +17,17 @@ const ContentRight = () => {
           about {
             heading
             subheading
-            description
           }
         }
       }
     }
   `)
-
   return (
     <div>
       <Heading>{about.heading}</Heading>
       <SubHeading>{about.subheading}</SubHeading>
 
-      <ScrollableContent>
-        <TextContainer>
-          <div dangerouslySetInnerHTML={{ __html: about.description }}></div>
-        </TextContainer>
-      </ScrollableContent>
+      <AboutMeTabs />
     </div>
   )
 }
