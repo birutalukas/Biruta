@@ -34,7 +34,7 @@ const StyledContainer = styled.div`
   }
 `
 
-const StyledThemeSwithcer = styled.button`
+const StyledThemeSwitcher = styled.button`
   width: 2rem;
   height: 2rem;
   border: 2px solid ${props => props.theme.title};
@@ -59,9 +59,9 @@ const Container = ({ children }) => {
     <Fragment>
       <StyledHeader>
         <Navbar />
-        <StyledThemeSwithcer onClick={() => invertThemeHandler()}>
+        <StyledThemeSwitcher onClick={() => invertThemeHandler()}>
           {invertedTheme ? "🌑" : "🌞"}
-        </StyledThemeSwithcer>
+        </StyledThemeSwitcher>
       </StyledHeader>
       <StyledContainer>{children}</StyledContainer>
     </Fragment>
