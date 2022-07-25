@@ -105,7 +105,6 @@ const AboutMeTabs = () => {
           }}
         >
           {tabsRepeater.map(item => {
-            console.log(item)
             return (
               <a
                 href="#tab"

@@ -15,16 +15,14 @@ const PhotoWrapper = styled.div`
 
 const Photo = styled.img`
   display: block;
-  // margin: 0 auto;
-  // position: relative;
-  // width: 90%;
   z-index: 5;
-
   position: absolute;
   top: 10%;
   left: 50%;
   width: 90%;
   transform: translateX(-50%);
+  box-shadow: 0px 2px 0px 5px ${props => props.theme.background};
+  border-radius: 50%;
 `
 
 const PhotoBackground = styled.img`

@@ -83,45 +83,58 @@ const Contact = () => {
   const onSubmitHandler = e => {
     e.preventDefault()
 
-    let bodyFormData = new FormData(formRef.current)
+    let bodyFormData = new FormData()
     bodyFormData.append("userName", name)
     bodyFormData.append("userEmail", email)
     bodyFormData.append("userPhone", phone)
     bodyFormData.append("userSubject", subject)
     bodyFormData.append("userMessage", message)
 
-    for (var [key, value] of bodyFormData.entries()) {
-      console.log(key, value)
+    const requestOptions = {
+      method: "POST",
+      body: bodyFormData,
     }
 
-    axios
-      .post(
-        "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
-        bodyFormData,
-        {
-          headers: {
-            Accept: "application/json, text/plain, /",
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
-      .then(response => {
-        //handle success
-        console.log(response.message)
-
-        console.log(bodyFormData)
-        setEmailError(false)
-        setResponse(response.message)
+    fetch(
+      "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+      requestOptions
+    )
+      .then(response => response.json())
+      .then(data => {
+        console.log("Success:", data)
       })
-      .catch(err => {
-        //handle error
-        console.log(bodyFormData)
-
-        console.log(err)
-
-        setEmailError(true)
-        setResponse(err.message)
+      .catch(error => {
+        console.error("Error:", error)
       })
+    // axios
+    //   .post(
+    //     "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+    //     bodyFormData,
+    //     {
+    //       headers: {
+    //         Accept: "application/json, text/plain, /",
+    //         "Content-Type": "multipart/form-data",
+
+    //         "Access-Control-Allow-Origin": "*",
+    //       },
+    //     }
+    //   )
+    //   .then(response => {
+    //     //handle success
+    //     console.log("Success ", response)
+
+    //     // setEmailError(false)
+    //     // setResponse(response.message)
+    //   })
+    //   .catch(err => {
+    //     //handle error
+    //     console.log(bodyFormData)
+
+    //     console.log("Err ", err)
+
+    //     // setEmailError(true)
+    //     // setResponse(err.message)
+    //   })
   }
 
   return (

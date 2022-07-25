@@ -38,7 +38,7 @@ const NavbarWrapper = styled.div`
       }
     }
 
-    & ::last-child {
+    & :last-child {
       margin-right: 0;
     }
   }
