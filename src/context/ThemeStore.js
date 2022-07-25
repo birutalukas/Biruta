@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 
-const ThemeContext = React.createContext({ invertedTheme: false }) // line A - creating the context
+const ThemeContext = React.createContext({
+  theme: "dark",
+  invertedTheme: false,
+}) // line A - creating the context
 
 const ThemeStore = ({ children }) => {
   const [theme, setTheme] = useState("dark") // line B - setting the initial theme
