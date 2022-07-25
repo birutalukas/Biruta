@@ -1,4 +1,7 @@
 import React, { useState } from "react"
+
+const ThemeContext = React.createContext({ invertedTheme: false }) // line A - creating the context
+
 const ThemeStore = ({ children }) => {
   const [theme, setTheme] = useState("dark") // line B - setting the initial theme
 
@@ -14,6 +17,5 @@ const ThemeStore = ({ children }) => {
     </ThemeContext.Provider>
   )
 }
-const ThemeContext = React.createContext(ThemeStore) // line A - creating the context
 
 export { ThemeStore, ThemeContext }
