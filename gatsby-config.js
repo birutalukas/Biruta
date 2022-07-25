@@ -27,8 +27,6 @@ module.exports = {
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
         url: process.env.WPGRAPHQL_URL || `https://backend.biruta.lt/graphql`,
-        useACF: true,
-        acfOptionPageIds: ["Content", "Portfolio", "About"],
       },
     },
 
