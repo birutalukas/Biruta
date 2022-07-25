@@ -90,51 +90,35 @@ const Contact = () => {
     bodyFormData.append("userSubject", subject)
     bodyFormData.append("userMessage", message)
 
-    const requestOptions = {
-      method: "POST",
-      body: bodyFormData,
-    }
+    axios
+      .post(
+        "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+        bodyFormData,
+        {
+          headers: {
+            Accept: "application/json, text/plain, /",
+            "Content-Type": "multipart/form-data",
 
-    fetch(
-      "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
-      requestOptions
-    )
-      .then(response => response.json())
-      .then(data => {
-        console.log("Success:", data)
+            // "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+      .then(response => {
+        //handle success
+        console.log("Success ", response)
+
+        // setEmailError(false)
+        // setResponse(response.message)
       })
-      .catch(error => {
-        console.error("Error:", error)
+      .catch(err => {
+        //handle error
+        console.log(bodyFormData)
+
+        console.log("Err ", err)
+
+        // setEmailError(true)
+        // setResponse(err.message)
       })
-    // axios
-    //   .post(
-    //     "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
-    //     bodyFormData,
-    //     {
-    //       headers: {
-    //         Accept: "application/json, text/plain, /",
-    //         "Content-Type": "multipart/form-data",
-
-    //         "Access-Control-Allow-Origin": "*",
-    //       },
-    //     }
-    //   )
-    //   .then(response => {
-    //     //handle success
-    //     console.log("Success ", response)
-
-    //     // setEmailError(false)
-    //     // setResponse(response.message)
-    //   })
-    //   .catch(err => {
-    //     //handle error
-    //     console.log(bodyFormData)
-
-    //     console.log("Err ", err)
-
-    //     // setEmailError(true)
-    //     // setResponse(err.message)
-    //   })
   }
 
   return (
