@@ -7,9 +7,8 @@ const ProjectImageContainer = styled.div`
   top: 5%;
   left: 50%;
   transform: translateX(-50%);
-  background: tomato;
   width: 78%;
-  height: 86%;
+  height: 88%;
   overflow-y: scroll;
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -30,8 +29,6 @@ const ProjectImageContainer = styled.div`
 const PortfolioProject = ({ title, screenshot }) => {
   const projectRef = useRef()
   const swiperSlide = useSwiperSlide()
-
-  console.log("swiperSLide", swiperSlide)
 
   useEffect(() => {
     if (projectRef.current !== null && swiperSlide.isActive) {

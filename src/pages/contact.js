@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import axios from "axios"
 import Wrapper from "../containers/Wrapper"
 import Container from "../containers/Container"
@@ -65,6 +65,8 @@ const Message = styled.label`
 `
 
 const Contact = () => {
+  const formRef = useRef()
+
   const [name, setName] = useState("")
 
   const [email, setEmail] = useState("")
@@ -75,34 +77,50 @@ const Contact = () => {
 
   const [message, setMessage] = useState("")
 
+  const [emailError, setEmailError] = useState(false)
   const [response, setResponse] = useState(null)
 
   const onSubmitHandler = e => {
     e.preventDefault()
 
-    let bodyFormData = new FormData()
+    let bodyFormData = new FormData(formRef.current)
     bodyFormData.append("userName", name)
     bodyFormData.append("userEmail", email)
     bodyFormData.append("userPhone", phone)
     bodyFormData.append("userSubject", subject)
     bodyFormData.append("userMessage", message)
 
-    axios({
-      method: "post",
-      url:
-        "http://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-      .then(function (response) {
-        //handle success
-        console.log(response)
+    for (var [key, value] of bodyFormData.entries()) {
+      console.log(key, value)
+    }
 
-        setResponse(response)
+    axios
+      .post(
+        "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+        bodyFormData,
+        {
+          headers: {
+            Accept: "application/json, text/plain, /",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then(response => {
+        //handle success
+        console.log(response.message)
+
+        console.log(bodyFormData)
+        setEmailError(false)
+        setResponse(response.message)
       })
-      .catch(function (response) {
+      .catch(err => {
         //handle error
-        console.log(response)
+        console.log(bodyFormData)
+
+        console.log(err)
+
+        setEmailError(true)
+        setResponse(err.message)
       })
   }
 
@@ -126,50 +144,54 @@ const Contact = () => {
             </TextContainer>
           </ContentHalf>
           <ContentHalf>
-            <FormElement onSubmit={onSubmitHandler}>
+            <FormElement ref={formRef} onSubmit={onSubmitHandler}>
               <FormGroup>
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="userName">Name</Label>
                 <Input
-                  id="name"
+                  id="userName"
                   onChange={e => setName(e.target.value)}
                   value={name}
                 />
               </FormGroup>
               <FormGroup half inputLeft>
-                <Label htmlFor="email">E-mail</Label>
+                <Label htmlFor="userEmail">E-mail</Label>
                 <Input
-                  id="email"
+                  id="userEmail"
                   onChange={e => setEmail(e.target.value)}
                   value={email}
                 />
               </FormGroup>
               <FormGroup half inputRight>
-                <Label htmlFor="phone">Phone Number</Label>
+                <Label htmlFor="userPhone">Phone Number</Label>
                 <Input
-                  id="phone"
+                  id="userPhone"
                   onChange={e => setPhone(e.target.value)}
                   value={phone}
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="subject">Subject</Label>
+                <Label htmlFor="userSubject">Subject</Label>
                 <Input
-                  id="subject"
+                  id="userSubject"
                   onChange={e => setSubject(e.target.value)}
                   value={subject}
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="userMessage">Message</Label>
                 <Textarea
-                  id="message"
+                  id="userMessage"
                   onChange={e => setMessage(e.target.value)}
                   value={message}
                 />
               </FormGroup>
               <FormGroup>
                 <Submit />
-                {response && response}
+                {response && emailError ? (
+                  <Message>{response}</Message>
+                ) : (
+                  <Message>{response}</Message>
+                )}
               </FormGroup>
             </FormElement>
           </ContentHalf>
