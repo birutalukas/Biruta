@@ -1,10 +1,12 @@
 import React, { useContext } from "react"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
-import { ThemeContext } from "../context/ThemeStore"
+import { ThemeContext } from "./ThemeStore"
 
 const Themes = theme => {
   const { invertedTheme } = useContext(ThemeContext) // get the current theme ('light' or 'dark')
 
+  console.log("ThemeContext: ", ThemeContext)
+  console.log("Inverted Theme ", invertedTheme)
   let selectedTheme = {}
 
   switch (theme) {
@@ -49,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
     * {
       margin: 0;
       padding: 0;
-      transition: all 0.5s;
+      transition: all 2s;
     }
   `
 

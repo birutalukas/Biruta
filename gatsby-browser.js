@@ -10,7 +10,7 @@ import "./src/css/style.css"
 
 import React from "react"
 import { ThemeStore } from "./src/context/ThemeStore"
-import Theme from "./src/theme/Theme"
+import Theme from "./src/context/Theme"
 
 export const wrapRootElement = ({ element }) => {
   return (
