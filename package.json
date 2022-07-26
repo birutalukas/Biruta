@@ -7,7 +7,7 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
-  "proxy": "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+  "proxy": "https://www.backend.biruta.lt",
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
     "gatsby"
@@ -45,6 +45,7 @@
     "gatsby-transformer-sharp": "^4.0.0",
     "gsap": "^3.10.4",
     "html-react-parser": "^1.1.1",
+    "http-proxy-middleware": "^2.0.6",
     "lodash": "^4.17.20",
     "postcss": "^8.2.10",
     "react": "^17.0.1",
