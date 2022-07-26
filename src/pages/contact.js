@@ -3,7 +3,6 @@ import axios from "axios"
 import Wrapper from "../containers/Wrapper"
 import Container from "../containers/Container"
 import { ContentHalf, FlexContent } from "../containers/Content"
-
 import styled from "styled-components"
 import { Heading, TextContainer } from "../components/styled/TextContent"
 
@@ -60,7 +59,7 @@ const Textarea = styled.textarea`
 `
 const Message = styled.label`
   margin-bottom: 0.5rem;
-  color: #24ccb4;
+  color: ${props => (props.error ? "red" : "#24ccb4")};
   display: block;
 `
 
@@ -90,22 +89,21 @@ const Contact = () => {
     bodyFormData.append("userSubject", subject)
     bodyFormData.append("userMessage", message)
 
-    axios({
-      method: "post",
-      url: "/wp-json/contact-form-7/v1/contact-forms/4/feedback",
-      headers: { "Content-Type": "multipart/form-data" },
-      proxy: createProxyMiddleware({
-        target: "https://www.backend.biruta.lt",
-        changeOrigin: true,
-      }),
-      data: bodyFormData,
-    })
+    axios
+      .post(
+        "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+        bodyFormData
+      )
       .then(response => {
         //handle success
+        if (response.data.status === "mail_sent") {
+          setEmailError(false)
+          setResponse(response.data.message)
+        } else {
+          setEmailError(true)
+          setResponse(response.data.message)
+        }
         console.log("Success ", response)
-
-        // setEmailError(false)
-        // setResponse(response.message)
       })
       .catch(err => {
         //handle error
@@ -113,40 +111,9 @@ const Contact = () => {
 
         console.log("Err ", err)
 
-        // setEmailError(true)
-        // setResponse(err.message)
+        setEmailError(true)
+        setResponse(err.message)
       })
-
-    // axios
-    //   .post(
-    //     "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
-    //     bodyFormData,
-    //     {
-    //       headers: {
-    //         Accept: "application/json, text/plain, /",
-    //         // "Content-Type": "multipart/form-data",
-    //         "Access-Control-Allow-Origin": "*",
-    //         "Access-Control-Allow-Credentials": false,
-    //         crossdomain: true,
-    //       },
-    //     }
-    //   )
-    //   .then(response => {
-    //     //handle success
-    //     console.log("Success ", response)
-
-    //     // setEmailError(false)
-    //     // setResponse(response.message)
-    //   })
-    //   .catch(err => {
-    //     //handle error
-    //     console.log(bodyFormData)
-
-    //     console.log("Err ", err)
-
-    //     // setEmailError(true)
-    //     // setResponse(err.message)
-    //   })
   }
 
   return (
@@ -213,7 +180,7 @@ const Contact = () => {
               <FormGroup>
                 <Submit />
                 {response && emailError ? (
-                  <Message>{response}</Message>
+                  <Message error>{response}</Message>
                 ) : (
                   <Message>{response}</Message>
                 )}
