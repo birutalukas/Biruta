@@ -100,7 +100,7 @@ const Contact = () => {
             "Content-Type": "application/x-www-form-urlencoded",
             // "Content-Type": "multipart/form-data",
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": true,
+            "Access-Control-Allow-Credentials": false,
             crossdomain: true,
           },
         }
