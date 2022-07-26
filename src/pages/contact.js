@@ -90,21 +90,16 @@ const Contact = () => {
     bodyFormData.append("userSubject", subject)
     bodyFormData.append("userMessage", message)
 
-    axios
-      .post(
-        "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
-        bodyFormData,
-        {
-          headers: {
-            Accept: "application/json, text/plain, /",
-            "Content-Type": "application/x-www-form-urlencoded",
-            // "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": false,
-            crossdomain: true,
-          },
-        }
-      )
+    axios({
+      method: "post",
+      url: "/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+      headers: { "Content-Type": "multipart/form-data" },
+      proxy: createProxyMiddleware({
+        target: "https://www.backend.biruta.lt",
+        changeOrigin: true,
+      }),
+      data: bodyFormData,
+    })
       .then(response => {
         //handle success
         console.log("Success ", response)
@@ -121,6 +116,37 @@ const Contact = () => {
         // setEmailError(true)
         // setResponse(err.message)
       })
+
+    // axios
+    //   .post(
+    //     "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+    //     bodyFormData,
+    //     {
+    //       headers: {
+    //         Accept: "application/json, text/plain, /",
+    //         // "Content-Type": "multipart/form-data",
+    //         "Access-Control-Allow-Origin": "*",
+    //         "Access-Control-Allow-Credentials": false,
+    //         crossdomain: true,
+    //       },
+    //     }
+    //   )
+    //   .then(response => {
+    //     //handle success
+    //     console.log("Success ", response)
+
+    //     // setEmailError(false)
+    //     // setResponse(response.message)
+    //   })
+    //   .catch(err => {
+    //     //handle error
+    //     console.log(bodyFormData)
+
+    //     console.log("Err ", err)
+
+    //     // setEmailError(true)
+    //     // setResponse(err.message)
+    //   })
   }
 
   return (
