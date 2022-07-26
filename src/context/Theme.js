@@ -6,7 +6,14 @@ const Themes = theme => {
   const { invertedTheme } = useContext(ThemeContext) // get the current theme ('light' or 'dark')
 
   console.log("Themes.js - invertedTheme ", invertedTheme)
-  let selectedTheme = {}
+  let selectedTheme = {
+    background: invertedTheme ? "#FFFFFF" : "#000000",
+    title: invertedTheme ? "#000000" : "#FFFFFF",
+    heading: "#e85333",
+    subheading: "#e3a334",
+    text: "#7ed491",
+    buttonColor: "#7ed491",
+  }
 
   switch (theme) {
     case "dark":
