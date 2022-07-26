@@ -5,8 +5,7 @@ import { ThemeContext } from "./ThemeStore"
 const Themes = theme => {
   const { invertedTheme } = useContext(ThemeContext) // get the current theme ('light' or 'dark')
 
-  console.log("ThemeContext: ", ThemeContext)
-  console.log("Inverted Theme ", invertedTheme)
+  console.log("Themes.js - invertedTheme ", invertedTheme)
   let selectedTheme = {}
 
   switch (theme) {
