@@ -4,7 +4,9 @@ const ThemeContext = React.createContext({
   invertedTheme: false,
   theme: "dark",
 }) // line A - creating the context
+
 console.log(ThemeContext)
+
 const ThemeStore = ({ children }) => {
   const [theme, setTheme] = useState("dark") // line B - setting the initial theme
 
