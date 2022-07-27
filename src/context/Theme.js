@@ -3,11 +3,8 @@ import { ThemeProvider, createGlobalStyle } from "styled-components"
 import { ThemeContext } from "./ThemeStore"
 
 const Themes = theme => {
-  console.log("const Themes render")
-
   const { invertedTheme } = useContext(ThemeContext) // get the current theme ('light' or 'dark')
 
-  console.log("Themes.js - invertedTheme ", invertedTheme)
   let selectedTheme = {}
 
   switch (theme) {
@@ -52,7 +49,6 @@ const Themes = theme => {
 const Theme = ({ children }) => {
   const { theme } = useContext(ThemeContext) // get the current theme ('light' or 'dark')
 
-  console.log("Theme - const theme", theme)
   return <ThemeProvider theme={Themes(theme)}>{children}</ThemeProvider>
 }
 

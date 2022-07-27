@@ -51,8 +51,6 @@ const PortfolioProjects = () => {
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
-      onSlideChange={() => console.log("Slide Change")}
-      onSwiper={swiper => console.log(swiper)}
     >
       {projectsRepeater.map((project, key) => (
         <SwiperSlide key={project.projectTitle}>
