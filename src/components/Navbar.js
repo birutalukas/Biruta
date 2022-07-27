@@ -13,11 +13,10 @@ const NavbarWrapper = styled.div`
   top: 0;
   padding-top: 2rem;
   z-index: 50;
-
   @media (max-width: 992px) {
-    /* display: none; */
+    left: 0;
+    transform: unset;
   }
-
   a {
     text-decoration: none;
     margin-right: 3rem;
@@ -28,7 +27,12 @@ const NavbarWrapper = styled.div`
     animation: morph 5s ease-in-out infinite;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     transition: all 5s ease-in-out;
-
+    &.activeMenuItem {
+      color: red;
+    }
+    @media (max-width: 992px) {
+      margin-right: 0;
+    }
     @keyframes morph {
       0% {
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -48,7 +52,7 @@ const NavbarWrapper = styled.div`
     }
   }
   .activeMenuItem {
-    border-bottom: 3px solid ${props => props.theme.title};
+    border-bottom: 3px solid red;
   }
 `
 

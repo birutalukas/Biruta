@@ -20,6 +20,7 @@ const StyledContentHalf = styled.div`
     position: "relative",
   })}
 
+  z-index: 10;
   @media (max-width: 992px) {
     width: 100%;
   }
