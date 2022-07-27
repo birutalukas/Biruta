@@ -21,9 +21,10 @@ const StyledContainer = styled.div`
   top: 0;
   transform: translateX(-50%);
   height: 100vh;
+  min-height: 100vh;
   width: 80%;
   max-width: 1440px;
-
+  z-index: 10;
   display: flex;
   align-items: center;
 
@@ -31,6 +32,9 @@ const StyledContainer = styled.div`
     position: absolute;
     right: 1rem;
     bottom: 1rem;
+  }
+  @media (max-width: 992px) {
+    height: fit-content;
   }
 `
 

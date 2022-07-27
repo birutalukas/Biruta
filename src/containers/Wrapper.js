@@ -7,14 +7,22 @@ import BubbleTopLeftSrc from "../../content/assets/images/bubble-top-left.svg"
 const StyledWrapper = styled.div`
   width: 100%;
   height: 100vh;
+  min-height: 100vh;
   background-color: ${props => props.theme.background};
   transition: 2s ease-in;
   position: relative;
+  @media (max-width: 992px) {
+    position: fixed;
+    overflow-y: auto;
+  }
 `
 const ElectricRightBubble = styled.img`
   position: absolute;
   bottom: 4rem;
   right: 0;
+  @media (max-width: 567px) {
+    opacity: 0.5;
+  }
 `
 const BubbleTopLeft = styled.img`
   position: absolute;

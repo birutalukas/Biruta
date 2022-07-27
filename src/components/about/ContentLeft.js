@@ -6,12 +6,9 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
 const PhotoWrapper = styled.div`
-  position: relative;
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 `
 
 const Photo = styled.div`
@@ -20,10 +17,35 @@ const Photo = styled.div`
   position: absolute;
   top: 10%;
   left: 50%;
-  width: 90%;
   transform: translateX(-50%);
-  box-shadow: 0px 2px 0px 5px ${props => props.theme.background};
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .gatsby-image-wrapper {
+    overflow: visible !important;
+    z-index: 5;
+    @media (max-width: 992px) {
+      max-width: 100%;
+    }
+  }
+  img {
+    box-shadow: 0px 2px 0px 5px ${props => props.theme.background};
+    border-radius: 50%;
+    transition: 2s ease-in;
+  }
+  @media (max-width: 992px) {
+    position: unset;
+    left: 0;
+    transform: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    > img {
+      width: 365px;
+      height: 365px;
+    }
+  }
 `
 
 const PhotoBackground = styled.img`
@@ -36,6 +58,10 @@ const PhotoBackground = styled.img`
   z-index: 1;
   animation: 15s rotate infinite;
   transform-origin: bottom;
+
+  @media (max-width: 992px) {
+    transform-origin: center;
+  }
 
   @keyframes rotate {
     from {
@@ -57,6 +83,10 @@ const PhotoBackgroundYellow = styled.img`
   z-index: 1;
   animation: 20s rotate infinite;
   transform-origin: bottom;
+
+  @media (max-width: 992px) {
+    transform-origin: center;
+  }
 
   @keyframes rotate {
     from {
@@ -106,9 +136,9 @@ const ContentLeft = () => {
     <PhotoWrapper>
       <Photo>
         <Img fixed={fixed} alt="Lukas Biruta" fadeIn={true} loading="eager" />
+        <PhotoBackground src={photoBackgroundSrc} alt="" />
+        <PhotoBackgroundYellow src={photoBackgroundYellowSrc} alt="" />
       </Photo>
-      <PhotoBackground src={photoBackgroundSrc} alt="" />
-      <PhotoBackgroundYellow src={photoBackgroundYellowSrc} alt="" />
     </PhotoWrapper>
   )
 }
