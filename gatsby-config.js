@@ -7,6 +7,9 @@
  */
 
 module.exports = {
+  flags: {
+    DEV_SSR: true,
+  },
   /**
    * Adding plugins to this array adds them to your Gatsby site.
    *
