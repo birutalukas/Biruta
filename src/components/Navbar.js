@@ -15,7 +15,7 @@ const NavbarWrapper = styled.div`
   z-index: 50;
 
   @media (max-width: 992px) {
-    display: none;
+    /* display: none; */
   }
 
   a {

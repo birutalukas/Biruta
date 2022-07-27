@@ -40,6 +40,9 @@ const StyledContainer = styled.div`
 `
 
 const StyledThemeSwitcher = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 2rem;
   height: 2rem;
   border: 2px solid ${props => props.theme.title};
