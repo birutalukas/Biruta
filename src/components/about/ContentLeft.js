@@ -1,8 +1,9 @@
 import React from "react"
 import photoBackgroundSrc from "../../../content/assets/images/profile-photo-background.svg"
 import photoBackgroundYellowSrc from "../../../content/assets/images/profile-photo-background-yellow.svg"
-import photoSrc from "../../../content/assets/images/foto.png"
 import styled from "styled-components"
+import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 
 const PhotoWrapper = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ const PhotoWrapper = styled.div`
   align-items: center;
 `
 
-const Photo = styled.img`
+const Photo = styled.div`
   display: block;
   z-index: 5;
   position: absolute;
@@ -46,7 +47,7 @@ const PhotoBackground = styled.img`
   }
 `
 
-const PhotoBackgrounYellow = styled.img`
+const PhotoBackgroundYellow = styled.img`
   transform: translateX(-50%) rotate(90deg);
   display: block;
   position: absolute;
@@ -68,11 +69,46 @@ const PhotoBackgrounYellow = styled.img`
 `
 
 const ContentLeft = () => {
+  const {
+    wp: {
+      acfOptionsAbout: {
+        about: {
+          picture: {
+            localFile: {
+              childImageSharp: { fixed },
+            },
+          },
+        },
+      },
+    },
+  } = useStaticQuery(graphql`
+    query AboutMePicture {
+      wp {
+        acfOptionsAbout {
+          about {
+            picture {
+              localFile {
+                childImageSharp {
+                  fixed(width: 365, height: 365) {
+                    src
+                    ...GatsbyImageSharpFixed_withWebp
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <PhotoWrapper>
-      <Photo src={photoSrc} alt="Lukas Biruta" />
+      <Photo>
+        <Img fixed={fixed} alt="Lukas Biruta" />
+      </Photo>
       <PhotoBackground src={photoBackgroundSrc} alt="" />
-      <PhotoBackgrounYellow src={photoBackgroundYellowSrc} alt="" />
+      <PhotoBackgroundYellow src={photoBackgroundYellowSrc} alt="" />
     </PhotoWrapper>
   )
 }
