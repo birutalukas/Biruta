@@ -28,8 +28,14 @@ const PortfolioProjects = () => {
               projectDescription
               projectWebsite
               projectScreenshot {
-                id
-                mediaItemUrl
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 500) {
+                      src
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
               }
             }
           }
@@ -57,7 +63,9 @@ const PortfolioProjects = () => {
             />
             <PortfolioProjectPreview
               title={project.projectTitle}
-              screenshot={project.projectScreenshot.mediaItemUrl}
+              screenshot={
+                project.projectScreenshot.localFile.childImageSharp.fluid
+              }
             />
           </ContentHalf>
           <ContentHalf paddingLeft="3rem">

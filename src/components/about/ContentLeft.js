@@ -105,7 +105,7 @@ const ContentLeft = () => {
   return (
     <PhotoWrapper>
       <Photo>
-        <Img fixed={fixed} alt="Lukas Biruta" critical />
+        <Img fixed={fixed} alt="Lukas Biruta" fadeIn={true} loading="eager" />
       </Photo>
       <PhotoBackground src={photoBackgroundSrc} alt="" />
       <PhotoBackgroundYellow src={photoBackgroundYellowSrc} alt="" />

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { useSwiperSlide } from "swiper/react"
+import Img from "gatsby-image"
 
 const ProjectImageContainer = styled.div`
   position: absolute;
@@ -45,7 +46,7 @@ const PortfolioProject = ({ title, screenshot }) => {
 
   return (
     <ProjectImageContainer ref={projectRef}>
-      <img src={screenshot} alt={title} />
+      <Img fluid={screenshot} fadeIn={true} />
     </ProjectImageContainer>
   )
 }
