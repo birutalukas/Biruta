@@ -13,6 +13,7 @@ const StyledTabPanelContent = styled.div`
     margin-left: 1rem;
     margin-bottom: 2rem;
     transition: 2s ease-in;
+    color: ${props => props.theme.text};
     &::marker {
       position: absolute;
       left: 0;
@@ -25,7 +26,7 @@ const StyledTabPanelContent = styled.div`
   }
   strong {
     font-weight: 900;
-    color: ${props => props.theme.title};
+    color: ${props => props.theme.text};
     font-size: 1rem;
   }
 
@@ -36,7 +37,7 @@ const StyledTabPanelContent = styled.div`
 
   p {
     font-size: 0.85rem;
-    color: ${props => props.theme.subtext};
+    opacity: 0.75;
   }
 `
 
@@ -114,7 +115,7 @@ const AboutMeTabs = () => {
                   display: "block",
                   padding: "1rem",
                   textDecoration: "none",
-                  color: selectedTab === item.title ? "red" : "#e3a334",
+                  color: selectedTab === item.title ? "red" : "#e85333",
                 }}
                 onClick={changeTab}
                 data-tab={item.title}

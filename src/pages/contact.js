@@ -23,8 +23,9 @@ const FormGroup = styled.div`
 
 const Label = styled.label`
   margin-bottom: 0.5rem;
-  color: #e85333;
+  color: ${props => props.theme.buttonColor};
   display: block;
+  transition: 2s ease-in;
 `
 
 const Input = styled.input`
@@ -35,7 +36,8 @@ const Input = styled.input`
   border-radius: 3px;
   width: 100%;
   margin-bottom: 0.5rem;
-  outline-color: #e85333;
+  outline-color: ${props => props.theme.buttonColor};
+  transition: 2s ease-in;
 `
 const Submit = styled(Input).attrs({
   type: "submit",
@@ -45,6 +47,8 @@ const Submit = styled(Input).attrs({
   background-color: #e85333;
   color: #ffffff;
   padding: 1rem;
+  background-color: ${props => props.theme.buttonColor};
+  transition: 2s ease-in;
 `
 
 const Textarea = styled.textarea`
@@ -55,7 +59,8 @@ const Textarea = styled.textarea`
   border-radius: 3px;
   width: 100%;
   margin-bottom: 0.5rem;
-  outline-color: #e85333;
+  outline-color: ${props => props.theme.buttonColor};
+  transition: 2s ease-in;
 `
 const Message = styled.label`
   margin-bottom: 0.5rem;
