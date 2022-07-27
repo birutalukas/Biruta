@@ -46,7 +46,12 @@ module.exports = {
         path: `${__dirname}/content/assets`,
       },
     },
-
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+        injectPageProps: false,
+      },
+    },
     /**
      * The following two plugins are required if you want to use Gatsby image
      * See https://www.gatsbyjs.com/docs/gatsby-image/#setting-up-gatsby-image
@@ -55,7 +60,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-transition-link`,
     `gatsby-plugin-styled-components`,
     {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
