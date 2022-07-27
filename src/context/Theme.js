@@ -48,24 +48,13 @@ const Themes = theme => {
 
   return selectedTheme
 }
-const GlobalStyle = createGlobalStyle`
-    * {
-      margin: 0;
-      padding: 0;
-      transition: all 2s;
-    }
-  `
 
 const Theme = ({ children }) => {
   const { theme } = useContext(ThemeContext) // get the current theme ('light' or 'dark')
 
   console.log("Theme - const theme", theme)
-  return (
-    <ThemeProvider theme={Themes(theme)}>
-      <GlobalStyle />
-      {children}
-    </ThemeProvider>
-  )
+  return <ThemeProvider theme={Themes(theme)}>{children}</ThemeProvider>
 }
 
+// Theme rendered in gatsby-browser.js as children of wrapRootElement and ThemeStore
 export default Theme

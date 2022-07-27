@@ -1,9 +1,6 @@
 import React, { useState } from "react"
 
-const ThemeContext = React.createContext({
-  invertedTheme: false,
-  theme: "dark",
-}) // line A - creating the context
+const ThemeContext = React.createContext({}) // line A - creating the context
 
 console.log(ThemeContext)
 
@@ -13,6 +10,7 @@ const ThemeStore = ({ children }) => {
   const [invertedTheme, setInvertedTheme] = useState(false)
 
   console.log("ThemeStore.js - invertedTheme: ", invertedTheme)
+
   const switchTheme = theme => setTheme(theme) // line C - changing the theme
 
   return (
@@ -24,4 +22,5 @@ const ThemeStore = ({ children }) => {
   )
 }
 
+// ThemeStore rendered in gatsby-browser.js as root of wrapRootElement children
 export { ThemeStore, ThemeContext }
