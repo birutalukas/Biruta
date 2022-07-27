@@ -218,4 +218,5 @@ a:focus {
 
 .swiper-slide {
   display: flex;
+  flex-wrap: wrap;
 }
