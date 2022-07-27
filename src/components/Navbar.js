@@ -13,6 +13,11 @@ const NavbarWrapper = styled.div`
   top: 0;
   padding-top: 2rem;
   z-index: 50;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+
   a {
     text-decoration: none;
     margin-right: 3rem;

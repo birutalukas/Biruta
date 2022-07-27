@@ -6,8 +6,8 @@ import BubbleTopLeftSrc from "../../content/assets/images/bubble-top-left.svg"
 
 const StyledWrapper = styled.div`
   width: 100%;
-  height: 100vh;
   min-height: 100vh;
+  overflow-x: hidden;
   background-color: ${props => props.theme.background};
   transition: 2s ease-in;
   position: relative;

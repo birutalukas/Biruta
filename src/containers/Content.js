@@ -4,8 +4,8 @@ import styled from "styled-components"
 export const Content = styled.main`
   width: 100%;
   @media (max-width: 992px) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
 `
 export const FlexContent = styled(Content)`

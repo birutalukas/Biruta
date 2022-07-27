@@ -35,6 +35,7 @@ const StyledContainer = styled.div`
   }
   @media (max-width: 992px) {
     height: fit-content;
+    width: 90%;
   }
 `
 
@@ -50,6 +51,10 @@ const StyledThemeSwitcher = styled.button`
   right: 0;
   top: 2rem;
   z-index: 50;
+
+  @media (max-width: 992px) {
+    border: none;
+  }
 `
 
 const Container = ({ children }) => {
