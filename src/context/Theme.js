@@ -49,7 +49,6 @@ const Themes = theme => {
 const Theme = ({ children }) => {
   const { theme } = useContext(ThemeContext) // get the current theme ('light' or 'dark')
 
-  console.log("Theme - const theme", theme)
   return <ThemeProvider theme={Themes(theme)}>{children}</ThemeProvider>
 }
 

@@ -112,7 +112,6 @@ const Contact = () => {
       })
       .catch(err => {
         //handle error
-        console.log(bodyFormData)
 
         console.log("Err ", err)
 
