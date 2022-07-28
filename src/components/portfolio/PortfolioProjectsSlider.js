@@ -7,9 +7,16 @@ import { StaticImage } from "gatsby-plugin-image"
 import { ContentHalf } from "../../containers/Content"
 import { CustomLink } from "../styled/Buttons"
 import { Heading, TextContainer } from "../styled/TextContent"
+import ScrollableContent from "../../containers/ScrollableContent"
+import styled from "styled-components"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+
+const PortfolioProjectWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+`
 
 const PortfolioProjects = () => {
   const {
@@ -55,24 +62,30 @@ const PortfolioProjects = () => {
       {projectsRepeater.map((project, key) => (
         <SwiperSlide key={project.projectTitle}>
           <ContentHalf>
-            <StaticImage
-              src="../../../content/assets/images/macbook.png"
-              alt="MacBook"
-            />
-            <PortfolioProjectPreview
-              title={project.projectTitle}
-              screenshot={
-                project.projectScreenshot.localFile.childImageSharp.fluid
-              }
-            />
+            <PortfolioProjectWrapper>
+              <StaticImage
+                src="../../../content/assets/images/macbook.png"
+                alt="MacBook"
+              />
+              <PortfolioProjectPreview
+                title={project.projectTitle}
+                screenshot={
+                  project.projectScreenshot.localFile.childImageSharp.fluid
+                }
+              />
+            </PortfolioProjectWrapper>
           </ContentHalf>
           <ContentHalf paddingLeft="3rem">
             <Heading>{project.projectTitle}</Heading>
-            <TextContainer>
-              <div
-                dangerouslySetInnerHTML={{ __html: project.projectDescription }}
-              ></div>
-            </TextContainer>
+            <ScrollableContent>
+              <TextContainer>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: project.projectDescription,
+                  }}
+                ></div>
+              </TextContainer>
+            </ScrollableContent>
             <CustomLink
               title="Visit Website"
               href={project.projectWebsite}
