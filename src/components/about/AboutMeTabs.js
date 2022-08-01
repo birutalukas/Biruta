@@ -7,11 +7,13 @@ import { useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 const StyledTabPanelContent = styled.div`
+  ul {
+    margin-top: 0;
+  }
   li {
     color: ${props => props.theme.title};
     position: relative;
     margin-left: 1rem;
-    margin-bottom: 2rem;
     transition: 2s ease-in;
     color: ${props => props.theme.text};
     &::marker {

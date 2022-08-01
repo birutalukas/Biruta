@@ -61,6 +61,7 @@ const Textarea = styled.textarea`
   margin-bottom: 0.5rem;
   outline-color: ${props => props.theme.buttonColor};
   transition: 2s ease-in;
+  min-height: 6em;
 `
 const Message = styled.label`
   margin-bottom: 0.5rem;
@@ -75,8 +76,6 @@ const Contact = () => {
 
   const [email, setEmail] = useState("")
 
-  const [phone, setPhone] = useState("")
-
   const [subject, setSubject] = useState("")
 
   const [message, setMessage] = useState("")
@@ -90,7 +89,6 @@ const Contact = () => {
     let bodyFormData = new FormData()
     bodyFormData.append("userName", name)
     bodyFormData.append("userEmail", email)
-    bodyFormData.append("userPhone", phone)
     bodyFormData.append("userSubject", subject)
     bodyFormData.append("userMessage", message)
 
@@ -141,7 +139,7 @@ const Contact = () => {
           </ContentHalf>
           <ContentHalf>
             <FormElement ref={formRef} onSubmit={onSubmitHandler}>
-              <FormGroup>
+              <FormGroup half inputLeft>
                 <Label htmlFor="userName">Name</Label>
                 <Input
                   id="userName"
@@ -149,20 +147,12 @@ const Contact = () => {
                   value={name}
                 />
               </FormGroup>
-              <FormGroup half inputLeft>
+              <FormGroup half inputRight>
                 <Label htmlFor="userEmail">E-mail</Label>
                 <Input
                   id="userEmail"
                   onChange={e => setEmail(e.target.value)}
                   value={email}
-                />
-              </FormGroup>
-              <FormGroup half inputRight>
-                <Label htmlFor="userPhone">Phone Number</Label>
-                <Input
-                  id="userPhone"
-                  onChange={e => setPhone(e.target.value)}
-                  value={phone}
                 />
               </FormGroup>
               <FormGroup>
