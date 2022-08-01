@@ -5,6 +5,7 @@ import Container from "../containers/Container"
 import { ContentHalf, FlexContent } from "../containers/Content"
 import styled from "styled-components"
 import { Heading, TextContainer } from "../components/styled/TextContent"
+import { graphql, useStaticQuery } from "gatsby"
 
 const FormElement = styled.form`
   display: flex;
@@ -118,6 +119,24 @@ const Contact = () => {
       })
   }
 
+  const {
+    wp: {
+      acfOptionsContact: {
+        contactMe: { contactMeText },
+      },
+    },
+  } = useStaticQuery(graphql`
+    query Contact {
+      wp {
+        acfOptionsContact {
+          contactMe {
+            contactMeText
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Wrapper>
       <Container>
@@ -125,16 +144,7 @@ const Contact = () => {
           <ContentHalf paddingRight="5rem">
             <Heading>Contact me..!</Heading>
             <TextContainer>
-              <p>
-                I'm baby kinfolk fanny pack subway tile voluptate et. Live-edge
-                cray narwhal, sustainable street art excepteur wayfarers four
-                dollar toast ipsum. Whatever cray synth mollit labore hammock
-                farm-to-table quis kale chips flexitarian. Lyft shaman viral
-                culpa. Waistcoat cupidatat neutra taiyaki. YOLO DIY ad
-                lumbersexual. Enim portland whatever, knausgaard pinterest
-                bicycle rights ennui narwhal heirloom keytar sriracha selfies
-                skateboard kale chips.
-              </p>
+              <div dangerouslySetInnerHTML={{ __html: contactMeText }} />
             </TextContainer>
           </ContentHalf>
           <ContentHalf>

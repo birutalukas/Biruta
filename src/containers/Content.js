@@ -23,6 +23,8 @@ const StyledContentHalf = styled.div`
   z-index: 10;
   @media (max-width: 992px) {
     width: 100%;
+    padding-right: 0;
+    padding-left: 0;
   }
 `
 

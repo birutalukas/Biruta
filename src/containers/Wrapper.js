@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import BubbleTopLeftSrc from "../../content/assets/images/bubble-top-left.svg"
+import ElectricRightBubbleSrc from "../../content/assets/images/electric-right.svg"
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -29,11 +30,23 @@ const BubbleTopLeft = styled.img`
     left: -10%;
   }
 `
+const ElectricRightBubble = styled.img`
+  position: fixed;
+  bottom: 2rem;
+  right: 0;
+  z-index: 1;
+  @media (max-width: 992px) {
+    right: -5%;
+    opacity: 0.5;
+  }
+`
+
 const Wrapper = ({ children }) => {
   return (
     <StyledWrapper>
       <BubbleTopLeft src={BubbleTopLeftSrc} alt="" />
       {children}
+      <ElectricRightBubble src={ElectricRightBubbleSrc} alt="" />
     </StyledWrapper>
   )
 }

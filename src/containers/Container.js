@@ -2,7 +2,6 @@ import React, { Fragment, useContext } from "react"
 import styled from "styled-components"
 import Navbar from "../components/Navbar"
 import { ThemeContext } from "../context/ThemeStore"
-import ElectricRightBubbleSrc from "../../content/assets/images/electric-right.svg"
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -60,16 +59,7 @@ const StyledThemeSwitcher = styled.button`
     border: none;
   }
 `
-const ElectricRightBubble = styled.img`
-  position: absolute;
-  bottom: 4rem;
-  right: -15%;
-  z-index: 1;
-  @media (max-width: 992px) {
-    right: -5%;
-    opacity: 0.5;
-  }
-`
+
 const Container = ({ children }) => {
   const { invertedTheme, setInvertedTheme } = useContext(ThemeContext)
 
@@ -85,9 +75,7 @@ const Container = ({ children }) => {
           {invertedTheme ? "🌑" : "🌞"}
         </StyledThemeSwitcher>
       </StyledHeader>
-      <StyledContainer>
-        {children} <ElectricRightBubble src={ElectricRightBubbleSrc} alt="" />
-      </StyledContainer>
+      <StyledContainer>{children}</StyledContainer>
     </Fragment>
   )
 }
