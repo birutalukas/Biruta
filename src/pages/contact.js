@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, Fragment } from "react"
 import axios from "axios"
+import { Helmet } from "react-helmet"
 import Wrapper from "../containers/Wrapper"
 import Container from "../containers/Container"
 import { ContentHalf, FlexContent } from "../containers/Content"
@@ -138,62 +139,71 @@ const Contact = () => {
   `)
 
   return (
-    <Wrapper>
-      <Container>
-        <FlexContent>
-          <ContentHalf paddingRight="5rem">
-            <Heading>Contact me..!</Heading>
-            <TextContainer>
-              <div dangerouslySetInnerHTML={{ __html: contactMeText }} />
-            </TextContainer>
-          </ContentHalf>
-          <ContentHalf>
-            <FormElement ref={formRef} onSubmit={onSubmitHandler}>
-              <FormGroup half inputLeft>
-                <Label htmlFor="userName">Name</Label>
-                <Input
-                  id="userName"
-                  onChange={e => setName(e.target.value)}
-                  value={name}
-                />
-              </FormGroup>
-              <FormGroup half inputRight>
-                <Label htmlFor="userEmail">E-mail</Label>
-                <Input
-                  id="userEmail"
-                  onChange={e => setEmail(e.target.value)}
-                  value={email}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="userSubject">Subject</Label>
-                <Input
-                  id="userSubject"
-                  onChange={e => setSubject(e.target.value)}
-                  value={subject}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="userMessage">Message</Label>
-                <Textarea
-                  id="userMessage"
-                  onChange={e => setMessage(e.target.value)}
-                  value={message}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Submit />
-                {response && emailError ? (
-                  <Message error>{response}</Message>
-                ) : (
-                  <Message>{response}</Message>
-                )}
-              </FormGroup>
-            </FormElement>
-          </ContentHalf>
-        </FlexContent>
-      </Container>
-    </Wrapper>
+    <Fragment>
+      <Helmet>
+        <title>Contact Me | Lukas Biruta - Web Developer</title>
+        <meta
+          name="description"
+          content="Contact Me | Lukas Biruta - Web Developer"
+        />
+      </Helmet>
+      <Wrapper>
+        <Container>
+          <FlexContent>
+            <ContentHalf paddingRight="5rem">
+              <Heading>Contact me..!</Heading>
+              <TextContainer>
+                <div dangerouslySetInnerHTML={{ __html: contactMeText }} />
+              </TextContainer>
+            </ContentHalf>
+            <ContentHalf>
+              <FormElement ref={formRef} onSubmit={onSubmitHandler}>
+                <FormGroup half inputLeft>
+                  <Label htmlFor="userName">Name</Label>
+                  <Input
+                    id="userName"
+                    onChange={e => setName(e.target.value)}
+                    value={name}
+                  />
+                </FormGroup>
+                <FormGroup half inputRight>
+                  <Label htmlFor="userEmail">E-mail</Label>
+                  <Input
+                    id="userEmail"
+                    onChange={e => setEmail(e.target.value)}
+                    value={email}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="userSubject">Subject</Label>
+                  <Input
+                    id="userSubject"
+                    onChange={e => setSubject(e.target.value)}
+                    value={subject}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="userMessage">Message</Label>
+                  <Textarea
+                    id="userMessage"
+                    onChange={e => setMessage(e.target.value)}
+                    value={message}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Submit />
+                  {response && emailError ? (
+                    <Message error>{response}</Message>
+                  ) : (
+                    <Message>{response}</Message>
+                  )}
+                </FormGroup>
+              </FormElement>
+            </ContentHalf>
+          </FlexContent>
+        </Container>
+      </Wrapper>
+    </Fragment>
   )
 }
 export default Contact

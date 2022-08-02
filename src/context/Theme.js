@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { ThemeProvider, createGlobalStyle } from "styled-components"
+import { ThemeProvider } from "styled-components"
 import { ThemeContext } from "./ThemeStore"
 
 const Themes = theme => {
