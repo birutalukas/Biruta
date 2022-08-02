@@ -2,6 +2,22 @@ import React, { Fragment, useContext } from "react"
 import styled from "styled-components"
 import Navbar from "../components/Navbar"
 import { ThemeContext } from "../context/ThemeStore"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
+const StyledLogo = styled(AniLink)`
+  position: absolute;
+  left: 0;
+  z-index: 999;
+  text-decoration: none;
+
+  h1 {
+    color: ${props => props.theme.heading};
+    transition: 2s ease-in;
+  }
+  @media (max-width: 992px) {
+    display: none;
+  }
+`
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -61,7 +77,9 @@ const StyledThemeSwitcher = styled.button`
 `
 
 const Container = ({ children }) => {
-  const { invertedTheme, setInvertedTheme } = useContext(ThemeContext)
+  const { switchTheme, invertedTheme, setInvertedTheme } = useContext(
+    ThemeContext
+  )
 
   const invertThemeHandler = () => {
     setInvertedTheme(!invertedTheme)
@@ -70,6 +88,15 @@ const Container = ({ children }) => {
   return (
     <Fragment>
       <StyledHeader>
+        <StyledLogo
+          paintDrip
+          to="/"
+          hex="#000000"
+          duration={1.2}
+          onClick={() => switchTheme("dark")}
+        >
+          <h1>Biruta</h1>
+        </StyledLogo>
         <Navbar />
         <StyledThemeSwitcher onClick={() => invertThemeHandler()}>
           {invertedTheme ? "🌑" : "🌞"}
