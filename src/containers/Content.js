@@ -19,7 +19,9 @@ const StyledContentHalf = styled.div`
     width: "50%",
     position: "relative",
   })}
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   z-index: 10;
   @media (max-width: 992px) {
     width: 100%;

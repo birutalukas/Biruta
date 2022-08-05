@@ -15,17 +15,17 @@ const Themes = theme => {
         heading: invertedTheme ? "#000000" : "#e85333",
         subheading: "#e3a334",
         text: invertedTheme ? "#000000" : "#e3a334",
-        buttonColor: "#7ed491",
+        buttonColor: invertedTheme ? "#121738" : "#e85333",
       }
       break
     case "neutral":
       selectedTheme = {
         background: "#B7661B",
-        title: "#000000",
-        heading: "#24ccb4",
+        title: "#121738",
+        heading: "#121738",
         subheading: "#e3a334",
-        text: "#7ed491",
-        buttonColor: "#7ed491",
+        text: "#7DEOE6",
+        buttonColor: "#121738",
       }
       break
     case "light":

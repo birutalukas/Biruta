@@ -54,6 +54,10 @@ const NavbarWrapper = styled.div`
   .activeMenuItem {
     border-bottom: 3px solid red;
   }
+  .activeMenuItemYellow {
+    border-bottom: 3px solid #ccc;
+    color: #ccc;
+  }
 `
 
 const Navbar = () => {
@@ -75,7 +79,7 @@ const Navbar = () => {
         to="/portfolio"
         hex="#B7661B"
         duration={1.2}
-        activeClassName="activeMenuItem"
+        activeClassName="activeMenuItemYellow"
         onClick={() => switchTheme("neutral")}
       >
         Portfolio
