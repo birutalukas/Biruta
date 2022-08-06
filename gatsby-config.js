@@ -12,7 +12,8 @@ module.exports = {
   },
   siteMetadata: {
     // If you didn't use the resolveSiteUrl option this needs to be set
-    siteUrl: `https://www.biruta.lt`,
+    title: "Lukas Biruta - Web Developer",
+    siteUrl: `https://biruta.lt`,
   },
 
   /**
