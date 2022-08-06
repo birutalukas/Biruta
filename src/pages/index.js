@@ -15,6 +15,10 @@ const HomePage = () => {
           name="description"
           content="Hello | Lukas Biruta - Web Developer"
         />
+        <meta
+          name="google-site-verification"
+          content="76xZOyak5ZAvEVdpK0ZKLhMHBZ25U5yG78Slzl9cOJ4"
+        />
       </Helmet>
 
       <Wrapper>
