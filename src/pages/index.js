@@ -19,6 +19,10 @@ const HomePage = () => {
           name="google-site-verification"
           content="76xZOyak5ZAvEVdpK0ZKLhMHBZ25U5yG78Slzl9cOJ4"
         />
+        <meta
+          property="og:image:secure"
+          content="https://biruta.com/content/assets/images/cover.jpg"
+        />
       </Helmet>
 
       <Wrapper>
