@@ -10,6 +10,11 @@ module.exports = {
   flags: {
     DEV_SSR: true,
   },
+  siteMetadata: {
+    // If you didn't use the resolveSiteUrl option this needs to be set
+    siteUrl: `https://www.biruta.lt`,
+  },
+
   /**
    * Adding plugins to this array adds them to your Gatsby site.
    *
@@ -86,6 +91,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
 
     {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
