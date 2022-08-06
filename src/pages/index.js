@@ -21,7 +21,7 @@ const HomePage = () => {
         />
         <meta
           property="og:image:secure"
-          content="https://biruta.com/content/assets/images/cover.jpg"
+          content="https://biruta.lt/content/assets/images/cover.jpg"
         />
       </Helmet>
 
