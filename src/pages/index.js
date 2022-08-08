@@ -19,7 +19,10 @@ const HomePage = () => {
           name="google-site-verification"
           content="76xZOyak5ZAvEVdpK0ZKLhMHBZ25U5yG78Slzl9cOJ4"
         />
-        <meta property="og:image:secure" content="/static/cover.jpg" />
+        <meta
+          property="og:image:secure"
+          content="https://media-exp1.licdn.com/dms/image/C4D03AQG5gCXBI3A9sw/profile-displayphoto-shrink_800_800/0/1604401690723?e=1665619200&v=beta&t=h6LQ5dlM8JubiR7Ehpi6fPMpV_vrqRao-zEU-Cep1Eg"
+        />
       </Helmet>
 
       <Wrapper>
