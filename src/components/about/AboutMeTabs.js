@@ -30,16 +30,34 @@ const StyledTabPanelContent = styled.div`
     font-weight: 900;
     color: ${props => props.theme.text};
     font-size: 1rem;
+    transition: 2s ease-in;
   }
 
   time {
+    display: block;
     font-size: 0.7rem;
     color: ${props => props.theme.subtext};
+    margin-bottom: 1rem;
   }
 
   p {
     font-size: 0.85rem;
     opacity: 0.75;
+  }
+  div {
+    margin-bottom: 1rem;
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .stack-item {
+    display: flex;
+    padding: 0.5rem;
+    border: 0.5px solid #e85333;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
   }
 `
 
@@ -58,6 +76,16 @@ const AboutMeTabs = () => {
             tabsRepeater {
               title
               description
+              experience
+              experienceRepeater {
+                company
+                jobTitle
+                date
+                description
+                stackRepeater {
+                  stackItem
+                }
+              }
             }
           }
         }
@@ -66,9 +94,11 @@ const AboutMeTabs = () => {
   `)
 
   let tabItems = []
-  tabsRepeater.forEach(item => {
-    tabItems.push(item.title)
-  })
+  if (tabsRepeater) {
+    tabsRepeater.forEach(item => {
+      tabItems.push(item.title)
+    })
+  }
 
   const [selectedTab, setSelectedTab] = useTabs(tabItems)
   const changeTab = e => {
@@ -138,9 +168,41 @@ const AboutMeTabs = () => {
             <TabPanel key={item.title} hidden={selectedTab !== item.title}>
               <ScrollableContent>
                 <TextContainer>
-                  <StyledTabPanelContent
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
+                  {item.experience && item.experienceRepeater ? (
+                    <StyledTabPanelContent>
+                      <ul>
+                        {item.experienceRepeater.map((exp, key) => {
+                          return (
+                            <li key={key}>
+                              <strong>{exp.company}</strong>{" "}
+                              <small>- {exp.jobTitle}</small>
+                              <time> {exp.date}</time>
+                              <div
+                                dangerouslySetInnerHTML={{
+                                  __html: exp.description,
+                                }}
+                              />
+                              {exp.stackRepeater && (
+                                <div className="stack">
+                                  {exp.stackRepeater.map((stack, key) => {
+                                    return (
+                                      <div className="stack-item" key={key}>
+                                        {stack.stackItem}
+                                      </div>
+                                    )
+                                  })}
+                                </div>
+                              )}
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </StyledTabPanelContent>
+                  ) : (
+                    <StyledTabPanelContent
+                      dangerouslySetInnerHTML={{ __html: item.description }}
+                    />
+                  )}
                 </TextContainer>
               </ScrollableContent>
             </TabPanel>

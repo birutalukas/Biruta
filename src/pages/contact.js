@@ -96,7 +96,7 @@ const Contact = () => {
 
     axios
       .post(
-        "https://www.backend.biruta.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+        "https://www.birudev.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
         bodyFormData
       )
       .then(response => {

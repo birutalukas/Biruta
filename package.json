@@ -7,7 +7,7 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
-  "proxy": "https://www.backend.biruta.lt",
+  "proxy": "https://www.birudev.lt",
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
     "gatsby"
