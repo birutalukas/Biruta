@@ -98,7 +98,7 @@ const Contact = () => {
       .post(
         "https://www.birudev.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback/",
         {
-          method: "HEAD",
+          method: "OPTIONS",
           mode: "no-cors",
         },
         bodyFormData
