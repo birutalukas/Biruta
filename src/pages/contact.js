@@ -88,40 +88,28 @@ const Contact = () => {
   const onSubmitHandler = e => {
     e.preventDefault()
 
-    let bodyFormData = new FormData()
-    bodyFormData.append("userName", name)
-    bodyFormData.append("userEmail", email)
-    bodyFormData.append("userSubject", subject)
-    bodyFormData.append("userMessage", message)
-
     axios
       .post(
-        "https://www.birudev.lt/wp-json/contact-form-7/v1/contact-forms/4/feedback",
+        "https://getform.io/f/da26ce7f-4b48-40f7-8aff-5fd86225003b",
         {
-          method: "OPTIONS",
-          mode: "no-cors",
+          name,
+          email,
+          subject,
+          message,
         },
-        bodyFormData
+        { headers: { Accept: "application/json" } }
       )
       .then(response => {
-        //handle success
-        if (response.data.status === "mail_sent") {
+        if (response.status === 200) {
           setEmailError(false)
-          setResponse(response.data.message)
+
+          setResponse("Thank You! I will contact You shortly!")
         } else {
           setEmailError(true)
-          setResponse(response.data.message)
+          setResponse("Something went wrong! Form was not submited!")
         }
-        console.log("Success ", response)
       })
-      .catch(err => {
-        //handle error
-
-        console.log("Err ", err)
-
-        setEmailError(true)
-        setResponse(err.message)
-      })
+      .catch(error => console.log(error))
   }
 
   const {
@@ -168,6 +156,7 @@ const Contact = () => {
                     id="userName"
                     onChange={e => setName(e.target.value)}
                     value={name}
+                    name={name}
                   />
                 </FormGroup>
                 <FormGroup half inputRight>
@@ -176,6 +165,7 @@ const Contact = () => {
                     id="userEmail"
                     onChange={e => setEmail(e.target.value)}
                     value={email}
+                    name={email}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -184,6 +174,7 @@ const Contact = () => {
                     id="userSubject"
                     onChange={e => setSubject(e.target.value)}
                     value={subject}
+                    name={subject}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -192,6 +183,7 @@ const Contact = () => {
                     id="userMessage"
                     onChange={e => setMessage(e.target.value)}
                     value={message}
+                    name={message}
                   />
                 </FormGroup>
                 <FormGroup>
